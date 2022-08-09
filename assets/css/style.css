@@ -60,7 +60,6 @@ input {
 }
 
 .saveBtn {
-  border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: navy;
@@ -68,12 +67,6 @@ input {
 }
 
 .saveBtn:hover {
-  font-size: 20px;
+  font-size: 25px;
   transition: all .2s ease-in-out;
-}
-
-.fas {
-  position: absolute;
-  top: 37%;
-  left: 37%;
 }

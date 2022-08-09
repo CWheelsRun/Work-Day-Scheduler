@@ -7,7 +7,7 @@ $("#currentDay").text(moment().format('dddd, MMMM Do YYYY, hh:mm A'));
 function rowColor() {
     var hour = moment().hours();
 
-    $(".row").each(function() {
+    $(".time-block").each(function() {
         var currentHour = parseInt($(this).attr("id"));
 
         // sets the conditional for the time of the day
@@ -22,5 +22,28 @@ function rowColor() {
     })
 };
 
-rowColor();
+// executes this function on clicking the save button
+saveBtn.on("click", function() {
 
+    var time = $(this).siblings(".hour").text();
+    var task = $(this).siblings(".task").val();
+
+    // saves the task in the local storage
+    localStorage.setItem(time, task);
+});
+
+// function to ensure the task remains when page is refreshed
+function scheduler() {
+
+    $(".hour").each(function() {
+        var currentHour = $(this).text();
+        var currentTask = localStorage.getItem(currentHour);
+
+        if(currentTask !== null) {
+            $(this).siblings(".task").val(currentTask);
+        }
+    });
+}
+
+rowColor();
+scheduler();
