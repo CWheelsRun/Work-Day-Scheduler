@@ -4,12 +4,12 @@ var saveBtn = $(".saveBtn");
 $("#currentDay").text(moment().format('dddd, MMMM Do YYYY, hh:mm A'));
 
 // function to color the rows based on the time
-function rowColor() {
+function timeColor() {
     var hour = moment().hours();
-
+    console.log(hour)
     $(".time-block").each(function() {
         var currentHour = parseInt($(this).attr("id"));
-
+        console.log(currentHour)
         // sets the conditional for the time of the day
 
         if (currentHour > hour) {
@@ -45,5 +45,5 @@ function scheduler() {
     });
 }
 
-rowColor();
+timeColor();
 scheduler();
