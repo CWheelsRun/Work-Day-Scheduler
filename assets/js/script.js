@@ -1,16 +1,26 @@
-const saveBtn = $(".saveBtn");
-const currentTime = moment().format("HH");
-const currentTimeInt = parseInt(currentTime);
+var saveBtn = $(".saveBtn");
 
-// JQuery Begins
-$(document).ready(function () {
+// current day is displayed at the top of the calendar
+$("#currentDay").text(moment().format('dddd, MMMM Do YYYY, hh:mm A'));
 
-    // shows the date and time in the header
-    $("#currentDay").append();
+// function to color the rows based on the time
+function rowColor() {
+    var hour = moment().hours();
 
-    let newDate = () => {
-        $("#currentDay").html(moment().format('dddd, MMMM Do YYYY, h:mm a'));
-    }
-    setInterval(newDate, 1000);
+    $(".row").each(function() {
+        var currentHour = parseInt($(this).attr("id"));
 
-});
+        // sets the conditional for the time of the day
+
+        if (currentHour > hour) {
+            $(this).addClass("future");
+        } else if (currentHour === hour) {
+            $(this).addClass("present");
+        } else {
+            $(this).addClass("past");
+        }
+    })
+};
+
+rowColor();
+
